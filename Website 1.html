@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca Cola</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+        .carousel {
+            width: 1187px;
+            overflow: hidden;
+            position: relative;
+            margin-left: 80px;
+            margin-top: 50px; 
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-images img {
+            width: 1188px; 
+            height: 650px;
+            cursor: pointer;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .circle {
+            width: 15px; 
+            height: 15px; 
+            border-radius: 50%;
+            background-color: transparent; 
+            border: 1px solid gray; 
+            margin: 0 5px;
+            margin-top: -20px;
+            cursor: pointer;
+            position: relative; 
+        }
+        .circle::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -16.5%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .circle.active::before {
+            background-color: black; 
+        }
+        .nav {
+            display: grid;
+            grid-template-columns: repeat(7, 150px);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #5D5D5D;
+            font-size: 17px;
+        }
+        .logo {
+            margin-top: 0px;
+            margin-left: 50px;
+        }
+        .top {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white; 
+            z-index: 1000; 
+        }
+        .side {
+            display: grid;
+            grid-template-columns: repeat(3, 45px);
+            margin-left: -150px;
+        }
+        .ghonchu {
+            margin-left: 65px;
+            margin-top: -20px;
+        }
+        .navele {
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.00001s, color 0.00001s;
+        }
+        .navele:nth-child(1):hover {
+            background-color: red;
+            color: white;
+        }
+        .navele:nth-child(2):hover {
+            background-color: #FF560E;
+            color: white;
+        }
+        .navele:nth-child(3):hover {
+            background-color: #6ACE7F;
+            color: white;
+        }
+        .navele:nth-child(4):hover {
+            background-color: #6AC9CE;
+            color: white;
+        }
+        .navele:nth-child(5):hover {
+            background-color: #D7B85B;
+            color: white;
+        }
+        .navele:nth-child(6):hover {
+            background-color: #F79900;
+            color: white;
+        }
+        .navele:nth-child(7):hover {
+            background-color: #B59E74;
+            color: white;
+        }
+        h1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-left: 370px;
+            margin-top: 100px;
+            font-size: 35px;
+        }
+        .arya{
+            display: grid;
+            grid-template-columns: repeat(2,580px);
+            margin-top: 50px;
+            margin-left: 110px;
+        }
+        .andar{
+            height: 600px;
+            width: 550px;
+            background-color: white;
+            border-radius: 5%;
+        }
+        .jag{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-left: 50px;
+            font-size: 30px;
+        }
+        .jeet{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: rgb(75, 75, 75);
+            font-size: 18px;
+            margin-left: 50px;
+            margin-top: -5px;
+        }
+        .dan{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: black;
+            font-size: 18px;
+            margin-left: 50px;
+            margin-top: 40px;
+        }
+        .dang{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: black;
+            font-size: 18px;
+            margin-left: 50px;
+            margin-top: px;
+        }
+        .image{
+            cursor: pointer;
+        }
+        .fe{
+            margin-left: 550px;
+        }
+        .feau{
+            display: grid;
+            grid-template-columns: repeat(3,380px);
+            margin-left: 110px;
+        }
+        .veer{
+            background-color: white;
+            height: 580px;
+            width: 350px;
+            margin-top: 26px;
+            border-radius: 15px;
+        }
+        .mouse{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 22px;
+            margin-left: 30px;
+        }
+        .never{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: grey;
+            margin-left: 30px;
+            font-size: 18px;
+        }
+        .photoninichenacircle{
+            display: grid;
+            grid-template-columns: repeat(5,25px);
+            margin-top: 40px;
+            margin-left: 600px;
+        }
+        .circle1{
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            border:1px solid grey;
+            cursor: pointer;
+        }
+        .image1{
+            height: 550px;
+            width: 550px;
+            background-color: white;
+            border-radius: 25px;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+        .image2{
+            margin-left: 650px;
+            margin-top:-474px;
+        }
+        .image3{
+            margin-left: 585px;
+            margin-top: -87px;
+        }
+        .image4{
+            height: 40px;
+            width: 40px;
+            background-color: white;
+            margin-top: -110px;
+            margin-left: 612px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="logo">
+            <img style="width: 160px;" src="the-coca-cola-company-logo.png" alt="">
+        </div>
+        <div class="nav">
+            <div class="navele">Our Company</div>
+            <div style="margin-left: 0px;height: 30px;width: 50px;" class="navele">Brands</div>
+            <div style="margin-left: -60px;width: 120px;width: 100px;" class="navele">Sustainability</div>
+            <div style="margin-left: -70px;width: 70px;" class="navele">Social</div>
+            <div style="margin-left: -110px;width: 80px;" class="navele">Careers</div>
+            <div style="margin-left: -140px;width: 130px;" class="navele">Media Center</div>
+            <div style="margin-left: -120px;width: 100px;" class="navele">Investors</div>
+        </div>
+        <div class="side">
+            <div class="image"><img style="width: 20px;" src="loupe.png" alt=""></div>
+            <div class="image"><img style="width: 20px;" src="globe.png" alt=""></div>
+            <div class="image"><img style="width: 20px;" src="account.png" alt=""></div>
+        </div>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="width1960.png" alt="Image 1">
+            <img src="width1960 (4).png" alt="Image 2">
+            <img src="width1960 (2).png" alt="Image 3">
+            <img src="width1960 (3).png" alt="Image 4">
+            <img src="width1960 (1).png" alt="Image 5">
+        </div>
+        <div class="carousel-controls">
+            <div class="circle" data-index="0"></div>
+            <div class="circle" data-index="1"></div>
+            <div class="circle" data-index="2"></div>
+            <div class="circle" data-index="3"></div>
+            <div class="circle" data-index="4"></div>
+        </div>
+    </div>
+    <h1>Our Sustainability Goals and Progress</h1>
+    <div class="arya">
+        <div class="andar">
+            <div class="delhi"><img width="550px" style="border-top-left-radius: 5%;border-top-right-radius: 5%;" src="width1960 (5).png" alt=""></div>
+            <h2 class="jag">Our Sustainability Progress</h2>
+            <h3 class="jeet">We build loved brands that bring joy to our consumers' lives with beverage choices for all occasions, tastes and lifestyles. Our growth strategy is grounded in our core values and commitment to social and environmental responsibility.</h3>
+            <h3 class="dan" style="width: 145px;">See our Progress</h3>
+        </div>
+        <div class="andar">
+            <div class="delhi"><img width="550px" style="border-top-left-radius: 5%;border-top-right-radius: 5%;" src="width1960 (6).png" alt=""></div>
+            <h2 class="jag">Sustainability Resource Center</h2>
+            <h3 class="jeet">At The Coca-Cola Company, our sustainability goals and initiatives are anchored by our purpose — to refresh the world and make a difference — and are core to our growth strategy. Get an overview of our efforts to help create a more sustainable business and better shared future.</h3>
+            <h3 class="dang">Explore the Resource Center</h3>
+        </div>
+    </div>
+    <h1 class="fe">Featured News</h1>
+    <div class="feau">
+        <div class="veer"><img style="border-radius: 15px;" width="350px" src="width1960 (7).png" alt=""><h4 class="mouse">Coca-Cola and the OREO® Brand Team Up for Limited-Edition Drink and Cookie</h4>
+        <h4 class="never">The two "bestie" brands have collaborated to offer fans unique flavor experiences that celebrate the "Real Magic" of friendship.</h4>
+        <h3 style="margin-left: 30px;" class="dang">Explore the collab</h3>
+        </div>
+        <div class="veer"><img style="border-radius: 15px;" width="350px" src="width1960 (8).png" alt=""><h4 style="margin-left: 10px;" class="mouse">How The Coca-Cola System Refreshes Local Economies and Communities in Markets Around the World</h4>
+            <h4 style="margin-left: 10px;" class="never">The Coca-Cola system creates local jobs to make,distribute and sell our drinks that refresh local communities.</h4>
+            <h3 style="margin-left: 10px;" class="dang">Explore</h3></div>
+        <div class="veer"><img style="border-radius: 15px;" width="350px" src="width1960 (9).png" alt=""><h4 class="mouse">Jack Daniel's and Coca-Cola RTD Launches in US</h4>
+            <h4 class="never">Jack Daniel's & Coca-Cola RTD a pre-mixed, canned cocktail that first launched last fall in Mexico- is set to hit stores in the United States</h4>
+            <h3 style="margin-left: 30px;" class="dang">Explore</h3></div>
+    </div>
+    <div class="photoninichenacircle">
+        <div class="circle1"></div>
+        <div class="circle1"></div>
+        <div class="circle1"></div>
+        <div class="circle1"></div>
+        <div class="circle1"></div>
+    </div>
+    <div class="circleniche">
+        <div class="image1"></div>
+        <div class="image2"><img src="html maate.PNG" alt=""></div>
+        <div class="image3"><img src="html 2.PNG" alt=""></div>
+        <div class="image4"></div>
+    </div>
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const circles = document.querySelectorAll('.circle');
+        const totalImages = circles.length;
+
+        circles.forEach((circle, index) => {
+            circle.addEventListener('click', () => {
+                carouselImages.style.transform = `translateX(-${index * 1187}px)`;
+                document.querySelector('.circle.active')?.classList.remove('active');
+                circle.classList.add('active');
+            });
+        });
+        circles[0].classList.add('active');
+    </script>
+</body>
+</html>
